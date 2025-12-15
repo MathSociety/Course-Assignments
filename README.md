@@ -20,3 +20,8 @@ We encourage everyone to contribute and enrich this repository:
 Your contributions make this repository a valuable resource for the entire student community. Let’s work together to create a centralized platform for academic resources.  
 
 Thank you for supporting this initiative!  
+
+
+_______UPDATE:: master branch has 
+
+         GMAE THEORY 
