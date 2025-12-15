@@ -1,0 +1,21 @@
+algo3:pseudocode for Deep Q-learning with replay buffer and target network
+uncommone algo
+1	initialize a 4 DQNs q hat (.;phi1_P) and q hat (.:phi2_p) and two targt DQN's target DQN q hat (.;phi1_T) and q hat(.:phi2_T). All these DQN should have the same architecture just different parameters.
+2	initialize an empty replay buffer ,B, of a certain size.
+3	set an integer N_u (predict DQN update frequency), N_T(target DQN update frequency), N_b (training batch size) and counter =0.
+4	for every episode until convergence do
+5		reset the environment to get the current state x.
+6		choose learning rate , alpha, and exploration probability , epsilon, for this episode.
+7		for every time slot of the episode until convergence do
+8			pick action , a,for current state,x,using a policy (like epsilon greedy for the Q-fuction given by the current predict DQN q hat (.;phi1_P)) and q hat(.:phi2_P).
+9			take action,a, reward , r, and next state ,x'.
+10			append <x,a,r,x'> to replay buffer B.
+11			if counter%N_u ==0 then
+12				randomly sample a batch of size N_b from replay buffer B.
+12.5				select which predict DQN to update uniformly at random. Let i denote the index of the selected predict DQN . Let i bar be the index of the other predict DQN , i.e, if i=1 then i bar = 2;else i bar =1
+13				compute input ,X, and target ,y, to train predict DQN using the sampled batch.To generate target y, use target DQN q hat (.:phi(i)_T) for action selection and q hat (.;phi(i bar)_T) for evaluation.
+14				use X and y to update phi(i)_P of the selected  predict DQN by taking one gradient descent step absed on the current learning rate , alpha
+15 			if counter%N_T ==0 then 
+16				set phi1_T<-phi1P and phi2_T<-phi2_P.
+17			set x<-x'and counter <-counter +1.
+

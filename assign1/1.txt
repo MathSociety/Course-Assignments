@@ -1,0 +1,36 @@
+Initialize environment and agent parameters:
+    Set epsilon (exploration rate)
+    Set total episodes
+    Initialize rewards list
+
+For each episode in range(total episodes):
+    Reset the environment to get the initial observation
+    Set done to False
+    total_reward = 0
+
+    While not done:
+        Generate a random number r between 0 and 1
+        
+        If r < epsilon:
+            # Exploration: Select a random action
+            action = select_random_action()
+        Else:
+            # Exploitation: Use the model to select the best action
+            action = select_best_action(observation)
+
+        # Take the action in the environment
+        next_observation, reward, done, truncated, info = env.step(action)
+        
+        # Update the Q-values or model with the received reward
+        update_action_value(observation, action, reward, next_observation)
+
+        # Update the total reward
+        total_reward += reward
+
+        # Move to the next observation
+        observation = next_observation
+
+    # Store the total reward for this episode
+    rewards.append(total_reward)
+
+Return rewards

@@ -1,0 +1,10 @@
+algo 1 pseudo for online DQN (deep q learning)
+1	initialize a DQN q hat(.;phi)
+2	for every episode until convergence do
+3		reset the environment to get the current state x.
+4		for every time slot of the episode until convergence do
+5			pick action, a, for current state ,x, using a policy (like epsilon greedy policy for the Q-function given by the current DQN q hat(.;phi))
+6			take action a , get reward r and next state x'.
+7			compute input X and target y , to train DQN using the sample <x,a,r,x'> and the current DQN q hat (.;phi).
+8			Use X and y to update phi of the DQN by taking one gradient descent step based on the current learning rate , alpha
+9			set x<-x'.

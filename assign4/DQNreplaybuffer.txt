@@ -1,0 +1,15 @@
+algorithm 2: pseudocode for deep q learning with replay buffer
+1	initialize DQN q hat (.;phi)
+2	initialize an empty replay buffer, B of a certain size.
+3	set an integer N_u(DQN update frequency), N_b (training batch size) and counter =0.
+4	for every episode until convergence do
+5		reset the environment to get the current state x
+6		for every time slot of the episode until convergence do 
+7			pick action ,a, for current state x using policy (like epsilon greedy policy for the Q-function given by the current DQN q hat(.:phi)).
+8			take action ,a, and get reward, r,and next state , x'.
+9			append<x,a,r,x'> to replay buffer B.
+10			if counter%N_u ==0 then
+11				randomly sample a batch of size N_b from replay buffer B.
+12				compute input,X, and target ,y, to train DQN using the sampled batch and the current DQN q hat (.;phi).
+13				use X and y to update phi of the DQN by taking one gradient descent step based on the current learning rate , alpha.
+14			set x<-x' and counter <-counter+1

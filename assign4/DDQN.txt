@@ -1,0 +1,19 @@
+algo4: pseudocode for double deep q learning with replay buffer and target network,(commonly used version)
+
+1	initialize a predict DQN q aht (.;phi_P) and target DQN q hat (.;phi_T). bothe the DQN should have the same architecture just different parameters.
+2	initialize an empty replay bbuffer , B of a certain size.
+3	set an integer N_u (predict DQN update frequency), N_T(target DQN update frequency), N_b (tarning batch size), and counter =0.
+4	for every episode until convergence do 
+5		reset the environment to get the current x.
+6		choose learning rate alpha and exploration probability , epsilon , for this episode.
+7		for every time slot of the epsiode until convergence do
+8			pick action a , for current state,x, using a policy (like epsilon greedy policy for the Q-function given by the current predict DQN q hat (.;phi_P)).
+9			take action a and get reward ,r, and next state ,x'.
+10			append <x,a,r,x'> to replay buffer B.
+11			if counter%N_u==0 then 
+12				randomly sample a batch of size N_b from replay buffer B.
+13				compute input ,X and target ,y, to train predict DQN using the sampled batch. To generate target y, use predict DQN q hat (.; phi_P) for action selection and target DQN q hat(.'phi_T) for evaluation.
+14				use X and y to update phi_P of the predict DQN by taking one gradient descent step based on the current learning rate ,alpha .
+15			if counter%N_T ==0 then
+16				set phi_t <-phi_P.
+17			set x<-x' and counter <-counter+1
