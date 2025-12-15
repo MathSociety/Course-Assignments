@@ -1,3 +1,9 @@
+
+_______UPDATE:: master branch has 
+
+         GMAE THEORY 
+
+
 # Course Assignments Repository  
 
 Welcome to the Course Assignments Repository!  
@@ -21,7 +27,3 @@ Your contributions make this repository a valuable resource for the entire stude
 
 Thank you for supporting this initiative!  
 
-
-_______UPDATE:: master branch has 
-
-         GMAE THEORY 
